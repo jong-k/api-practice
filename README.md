@@ -1,2 +1,3 @@
-# notestream
-note가 흐르는 어플리케이션
+# Twitter Clone
+트위터 클론코딩
+## 하하 쉽지?

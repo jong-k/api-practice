@@ -1,6 +1,1 @@
-# 기본
 /.idea/
-
-# /api
-/api/.env
-/api/node_modules/
