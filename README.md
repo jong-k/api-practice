@@ -25,7 +25,7 @@ gatsby new tutorial https://github.com/gatsbyjs/gatsby-starter-hello-world
 ```
 또는 CLI에서 질문에 대답하며 프로젝트를 생성할 수도 있음
 ```
-gatsbu new
+gatsby new
 ```
 - 프로젝트를 열고 package.json 에서 다양한 명령어가 등록된 것을 확인
   - gatsby develop(= npm start) : 개발 인스턴스 실행 (인스턴스용 public 폴더 생성)
@@ -42,6 +42,43 @@ gatsbu new
 
 - /src/pages 내에 about.js 만들고 기본적인 컴포넌트를 만들고 반환하면 http://localhost:8000/about 여기로 접근 가능
 
+## 3. 몇가지 팁
 ### 404 page
 - 없는 페이지에 접속하면 404 Error가 발생한다.
-- /src/page 내에 404.js 를 만들면 에러가 발생했을 때 띄울 페이지를 만들 수 있다.
+- /src/pages 내에 404.js 를 만들면 에러가 발생했을 때 띄울 페이지를 만들 수 있다.
+
+### nested page
+- /src/pages 내에 company 폴더를 만들고
+  - index.js 를 만들면 홈/company로 접근 가능 (pages/company.js 보다 우선)
+  - home.js 를 만들면 company/home 으로 접근 가능
+
+### link
+- react-router-dom 의 Link와 같은 개념
+- 외부 링크는 a 태그를 사용
+- 존재하는 페이지만 설정할 수 있음
+```js
+import { Link } from "gatsby";
+//...
+<Link to="/about">about</Link>
+```
+
+## 4. Scss, Styled-components 사용
+- Gatsby 플러그인 설치 필요
+```
+npm install sass gatsby-plugin-sass
+npm install gatsby-plugin-styled-components styled-components babel-plugin-styled-components
+```
+- gatsby.config 에 코드 추가
+```
+module.exports = {
+  plugins: [`gatsby-plugin-styled-components`, `gatsby-plugin-sass`],
+};
+```
+- 참고로 reset css 를 위해 normalize.css 를 사용하면 편리하다
+```
+npm i normalize.css
+```
+```js
+// layout이 시작되는 공간에서 import
+import "normalize.css";
+```
