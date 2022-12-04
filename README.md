@@ -82,3 +82,42 @@ npm i normalize.css
 // layout이 시작되는 공간에서 import
 import "normalize.css";
 ```
+
+## 5. 이미지 사용
+- width만 4000px가 넘는 2.5 mb의 고해상도 이미지를 사용하는데, 일반적으로 css로 witdh를 줄여서 사용하게 된다.
+- 하지만, 크기를 줄여서 사용하더라도 2.5 mb의 크기의 사진을 브라우저가 받아오려면 불필요한 시간 낭비가 발생한다.
+- 그래서 Gatsby의 이미지 플러그인을 사용한다
+### gatsby-plugin-image
+- Gatsby 에서 제공하는 이미지 처리용 공식 플러그인
+- 설치
+```
+npm install gatsby-plugin-image gatsby-plugin-sharp gatsby-source-filesystem gatsby-transformer-sharp
+```
+- 설정파일에 아래 플러그인을 추가한다
+```js
+module.exports = {
+  plugins: [
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`, // Needed for dynamic images
+  ],
+}
+```
+- 사용
+```
+import { StaticImage } from "gatsby-plugin-image"
+```
+- 이렇게 import 한 후 StaticImage 태그로 사용한다.
+- 사진이 로딩될때까지 회색의 기본 이미지가 로딩되고, 용량이 줄어드는 장점이 있다.
+
+
+- 반면 제한되는 점도 존재한다.
+- src에 변수를 전달할 수 없으므로 경로를 지정해야 한다.
+- props를 가질 수 있으나, 함수를 호출하는 props를 가질 수 없다.
+  - 외부 스코프에서 참조하거나 하는것이 불가능
+
+
+- layout
+  - constrained(default) : 브라우저 창이 늘어나도 width 이상 사진이 커지지 않음 (width 이하에서는 자유롭게 움직임)
+  - fixed : 사진 사이즈가 고정
+  - fullWidth : width가 계속해서 커질 수 있음
