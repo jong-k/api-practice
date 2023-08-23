@@ -5,5 +5,8 @@
   "type": "module",
   "repository": "https://github.com/jong-k/js-design-patterns.git",
   "author": "jhkim-hdxwill <jhkim00@iwillmed.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.0.2"
+  }
 }
