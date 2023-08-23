@@ -1,0 +1,9 @@
+{
+  "name": "js-design-patterns",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "repository": "https://github.com/jong-k/js-design-patterns.git",
+  "author": "jhkim-hdxwill <jhkim00@iwillmed.com>",
+  "license": "MIT"
+}
