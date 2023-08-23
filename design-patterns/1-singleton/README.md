@@ -140,3 +140,7 @@ Object.freeze(counter);
 - 일반적으로 싱글턴 패턴을 사용해 전역 상태를 사용하면 전역 상태가 오염될 위험이 있음
 - React에서는 싱글턴 대신 Redux, Context 을 활용해 전역 상태에 의존
 - 이러한 도구를 사용하면, 전역 상태가 오염될 위험을 줄이면서 전역 상태를 관리할 수 있음
+
+### 참고
+
+https://www.patterns.dev/posts/singleton-pattern
