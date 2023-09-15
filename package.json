@@ -7,6 +7,12 @@
   "author": "jhkim-hdxwill <jhkim00@iwillmed.com>",
   "license": "MIT",
   "devDependencies": {
-    "prettier": "^3.0.2"
+    "@vitejs/plugin-react": "^4.0.4",
+    "prettier": "^3.0.2",
+    "vite": "^4.4.9"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
