@@ -114,3 +114,7 @@ personProxy.name = "Jane Doe"; // Changed name from John Doe to Jane Doe
 - 단, 프록시 객체를 과용하거나, 핸들러 메서드 호출 시 많은 작업을 수행하게 하면 성능을 저하시킬 수 있음
   - 프록시 객체는 타겟 객체에 대한 동작을 가로채서 먼저 실행되기 때문
   - 성능이 중요한 코드에서는 프록시를 사용하지 않는 것이 좋음
+
+참고
+
+https://www.patterns.dev/posts/proxy-pattern
