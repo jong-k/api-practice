@@ -25,7 +25,7 @@ class Counter {
   }
   // counter 1 감소
   decrement() {
-    return --counterl;
+    return --counter;
   }
 }
 
@@ -107,6 +107,29 @@ class Counter {
 // 단, 얕은 동결이므로 프로퍼티가 객체라면 손자 프로퍼티 수정 가능
 const singletonCounter = Object.freeze(new Counter());
 export default singletonCounter;
+```
+
+참고) Object.freeze 메서드
+
+- 프로퍼티 수정, 삭제, 추가 불가
+
+```js
+const person = {
+  name: "kim",
+  age: 30,
+  married: false,
+};
+
+const fixedPerson = Object.freeze(person);
+// 프로퍼티 값 수정 불가
+fixedPerson.age = 20;
+console.log(fixedPerson.age); // 30
+// 프로퍼티 추가 불가
+fixedPerson.address = "seoul";
+console.log(fixedPerson); // {name: 'kim', age: 30, married: false}
+// 프로퍼티 삭제 불가
+delete fixedPerson.name;
+console.log(fixedPerson); // {name: 'kim', age: 30, married: false}
 ```
 
 ### 4. 트레이드오프
