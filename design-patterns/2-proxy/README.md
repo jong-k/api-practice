@@ -2,7 +2,6 @@
 
 - 프록시(Proxy) : 대리인
 - 대상 객체와 직접 상호작용 하지 않고 프록시 객체와 상호작용
-- 특정 객체와의 상호작용을 더 잘 제어
 - 프록시 객체는 값을 가져오거나 값을 설정할 때와 같이 객체와 상호작용할 때마다 동작 결정 가능
 
 ### 1. JavaScript 내장 `Proxy` 클래스 사용하기
@@ -13,10 +12,15 @@ const person = {
   age: 42,
   nationality: "American",
 };
+
 // Proxy 클래스의 새 인스턴스로 새 프록시 생성
-// 생성자의 2번째 인수에 핸들러 객체 전달
-//                                     _
+// 생성자의 2번째 인수에 핸들러 객체 전달                                _
 const personProxy = new Proxy(person, {});
+
+// 핸들러 객체가 비어있을 경우, 원래 객체처럼 작동
+personProxy.name; // "John Doe"
+personProxy.age; // 42
+personProxy.nationality; // "American"
 ```
 
 ### 2. 핸들러 객체
@@ -48,16 +52,16 @@ personProxy.age = 43; // Changed age from 42 to 43
 const personProxy = new Proxy(person, {
   get: (obj, prop) => {
     if (!obj[prop]) {
-      console.log(`Hmm.. this property doesn't seem to exist`);
+      console.log("Hmm.. this property doesn't seem to exist");
     } else {
       console.log(`The value of ${prop} is ${obj[prop]}`);
     }
   },
   set: (obj, prop, value) => {
     if (prop === "age" && typeof value !== "number") {
-      console.log(`Sorry, you can only pass numeric values for age.`);
+      console.log("Sorry, you can only pass numeric values for age.");
     } else if (prop === "name" && value.length < 2) {
-      console.log(`You need to provide a valid name.`);
+      console.log("You need to provide a valid name.");
     } else {
       console.log(`Changed ${prop} from ${obj[prop]} to ${value}.`);
       obj[prop] = value;
@@ -75,7 +79,7 @@ personProxy.name = ""; // You need to provide a valid name.
 
 Reflect 객체를 사용하여 대상 객체를 더 쉽게 조작할 수 있다
 
-- 이전에는 객체[키] 형태의 대괄호 표기법을 사용하여 직접 프로퍼티를 get/set 해야 했음
+- 이전에는 `객체[키]` 형태의 대괄호 표기법을 사용하여 직접 프로퍼티를 get/set 해야 했음
 - Reflect 객체의 메서드를 활용하면 이러한 과정을 간단하게 표현 가능
 - Reflect 객체의 메서드는 핸들러 객체의 메서드와 동일한 이름과 매개변수를 가짐
   - e.g. `Reflect.get()` or `Reflect.set()`
@@ -89,10 +93,12 @@ const person = {
 
 const personProxy = new Proxy(person, {
   get: (obj, prop) => {
+    // obj[prop] 대신 Reflect.get(obj, prop);
     console.log(`The value of ${prop} is ${Reflect.get(obj, prop)}`);
   },
   set: (obj, prop, value) => {
     console.log(`Changed ${prop} from ${obj[prop]} to ${value}`);
+    // obj[prop] = value; 대신 Reflect.set(obj, prop, value);
     return Reflect.set(obj, prop, value);
   },
 });
@@ -104,6 +110,7 @@ personProxy.name = "Jane Doe"; // Changed name from John Doe to Jane Doe
 
 ### 4. 트레이드 오프
 
-- 프록시 패턴은 객체의 동작을 제거하는데 유용하며 유효성 검증, 포매팅, 알림(notification), 디버깅 등에 활용 가능
+- 프록시 패턴은 타겟 객체의 동작을 제어하는데 유용하며 유효성 검증, 포매팅, 알림(notification), 디버깅 등에 활용 가능
 - 단, 프록시 객체를 과용하거나, 핸들러 메서드 호출 시 많은 작업을 수행하게 하면 성능을 저하시킬 수 있음
+  - 프록시 객체는 타겟 객체에 대한 동작을 가로채서 먼저 실행되기 때문
   - 성능이 중요한 코드에서는 프록시를 사용하지 않는 것이 좋음
