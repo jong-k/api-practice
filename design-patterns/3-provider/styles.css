@@ -1,6 +1,6 @@
 html,
 body {
-  margin: 0px;
+  margin: 0;
 }
 
 .App {
@@ -51,8 +51,8 @@ body {
   font-size: 23px;
   height: 26px;
   width: 26px;
-  left: 4px;
-  bottom: 4px;
+  left: 2px;
+  bottom: 8px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
@@ -81,7 +81,7 @@ input:checked + .slider:before {
 }
 
 ul {
-  padding: 0px;
+  padding: 0;
   width: 90%;
   max-width: 500px;
 }

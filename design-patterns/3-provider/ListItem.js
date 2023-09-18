@@ -1,6 +1,10 @@
+import { useThemeContext } from "./useThemeContext.js";
+
 export default function ListItem() {
+  const theme = useThemeContext();
+
   return (
-    <li>
+    <li style={theme.theme}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
       veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea

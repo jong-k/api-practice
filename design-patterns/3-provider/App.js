@@ -1,12 +1,13 @@
-import "./styles.css";
-import List from "./List";
+import ThemeProvider from "./ThemeProvider";
 import Toggle from "./Toggle";
+import List from "./List";
+import "./styles.css";
 
 export default function App() {
   return (
-    <div className="App">
+    <ThemeProvider>
       <Toggle />
       <List />
-    </div>
+    </ThemeProvider>
   );
 }
