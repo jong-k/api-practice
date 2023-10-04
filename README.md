@@ -1,17 +1,8 @@
-# JavaScript Design Patterns
+# React + Vite
 
-> 자바스크립트로 공부하는 디자인 패턴
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-https://www.patterns.dev/posts
+Currently, two official plugins are available:
 
-## 목차
-
-## 1. 디자인 패턴
-
-#### 1.1. 싱글턴
-
-#### 1.2. 프록시
-
-## 2. 렌더링 패턴
-
-## 3. 퍼포먼스 패턴
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
