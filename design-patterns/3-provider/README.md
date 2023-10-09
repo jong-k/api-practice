@@ -107,10 +107,71 @@ function Header() {
 ```
 
 ## 3. 다크모드 구현하기
-
+- Context API 활용
 - 모든 컴포넌트에 현재 theme 데이터를 전달하는 대신, ThemeProvider 컴포넌트로 theme이 필요한 컴포넌트들을 래핑한다
 
-https://codesandbox.io/s/eager-andras-tdkc69?file=/src/ThemeProvider.js
+`Provider.jsx`
+
+## 4. 케이스 스터디
+### 예시: Styled-components
+- Provider 패턴을 적용한 대표적인 라이브러리로 Styled-components를 꼽을 수 있다
+- ThemeProvider API를 통해 Context API를 사용하지 않고도 theme 객체를 전역에서 참조할 수 있다
+
+App.jsx : ThemeProvider API 활용
+```js
+import { ThemeProvider } from "styled-components";
+ 
+export default function App() {
+  const [theme, setTheme] = useState("dark");
+ 
+  function toggleTheme() {
+    setTheme(theme === "light" ? "dark" : "light");
+  }
+ 
+  return (
+    <div className={`App theme-${theme}`}>
+      <ThemeProvider theme={themes[theme]}>
+        <Toggle toggleTheme={toggleTheme} />
+        <List />
+      </ThemeProvider>
+    </div>
+  );
+}
+```
+
+ListItem.jsx : theme 객체를 활용해 스타일 작성
+
+```js
+import styled from "styled-components";
+ 
+export default function ListItem() {
+  return (
+    <Li>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+    </Li>
+  );
+}
+ 
+const Li = styled.li`
+  ${({ theme }) => `
+     background-color: ${theme.backgroundColor};
+     color: ${theme.color};
+  `}
+`;
+
+```
+## 5. 트레이드 오프
+### 장점
+- 각 컴포넌트 레이어에 props로 데이터를 일일이 전달할 필요가 없어져 버그를 줄일 수 있다
+- 즉, 안티 패턴은 props drilling 제거 가능
+
+### 단점
+- 동일한 컨텍스트 객체를 소비하는 경우, 컨텍스트 객체의 데이터가 바뀔 때마다 이를 소비하는 모든 컴포넌트가 리렌더링된다
+- 이는 대규모 애플리케이션에서 성능 문제를 야기할 수 있다
+- 이를 막기 위해서는 여러 프로바이더를 만들어야 한다
 
 참고
 
