@@ -1,9 +1,4 @@
-html,
-body {
-  margin: 0px;
-}
-
-.App {
+.Provider {
   font-family: sans-serif;
   text-align: center;
   display: flex;
@@ -11,11 +6,11 @@ body {
   align-items: center;
 }
 
-.App.theme-light {
+.Provider .theme-light {
   background-color: #fff;
 }
 
-.App.theme-dark {
+.Provider .theme-dark {
   background-color: #171717;
 }
 
@@ -49,10 +44,10 @@ body {
   position: absolute;
   content: "🌝";
   font-size: 23px;
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
+  height: 30px;
+  width: 30px;
+  left: 2px;
+  bottom: 5px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
@@ -80,13 +75,13 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-ul {
-  padding: 0px;
+.list {
+  padding: 0;
   width: 90%;
   max-width: 500px;
 }
 
-li {
+.list-item {
   list-style: none;
   margin: 1rem;
   border: 1px solid grey;

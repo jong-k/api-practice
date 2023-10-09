@@ -1,16 +1,4 @@
-import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
-import Singleton from "../design-patterns/1-singleton/Singleton";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: "/singleton",
-    element: <Singleton />,
-  },
-]);
+import { Link } from "react-router-dom";
 
 export default function App() {
   return (
@@ -18,6 +6,10 @@ export default function App() {
       <div>
         <Link to="/singleton">
           <h2>1. 싱글턴 패턴</h2>
+        </Link>
+        <h2>2. 프록시 패턴</h2>
+        <Link to="/provider">
+          <h2>3. 프로바이더 패턴</h2>
         </Link>
       </div>
     </>

@@ -1,3 +1,5 @@
+import ListItem from "./ListItem.jsx";
+
 export default function List() {
   return (
     <ul className="list">

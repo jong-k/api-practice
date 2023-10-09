@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import Singleton from "../design-patterns/1-singleton/Singleton.jsx";
+import Provider from "../design-patterns/3-provider/Provider.jsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "/singleton",
     element: <Singleton />,
+  },
+  {
+    path: "/provider",
+    element: <Provider />,
   },
 ]);
 
