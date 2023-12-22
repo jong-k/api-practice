@@ -3,3 +3,5 @@
 ## 1. Container/Presentational
 
 ## 2. HOC
+
+## 3. Render Props
